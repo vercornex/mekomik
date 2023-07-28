@@ -18,7 +18,7 @@ export default function Home() {
   async function fetchData() {
     setLoading(true);
     // setPage(parseInt(searchParams.get("page")!));
-    setDatas({});
+    // setDatas({});
     try {
       console.log(page);
       const response = await fetch(
