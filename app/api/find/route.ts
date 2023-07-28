@@ -7,7 +7,8 @@ export async function GET(req: Request) {
   const page = req.url[req.url.length - 1];
   // console.log(page);
 
-  const data = await getData(parseInt(page));
+  // const data = await getData(parseInt(page));
+  const data = await getData(10);
   console.log("Crawling DONE...");
   // const promises = data.map(async (item) => {
   //   console.log(item["chapters"].length);

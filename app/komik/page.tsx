@@ -21,10 +21,7 @@ export default function Home() {
     // setDatas({});
     try {
       console.log(page);
-      const response = await fetch(
-        "http://localhost:3000/api/find?" +
-          new URLSearchParams({ page: page.toString() }).toString()
-      );
+      const response = await fetch("http://localhost:3000/api/find");
       const { data } = await response.json();
 
       setDatas(data);
@@ -38,7 +35,7 @@ export default function Home() {
   useEffect(() => {
     fetchData();
     return () => {};
-  }, [page]);
+  }, []);
 
   return (
     <main className="flex flex-col justify-center items-center gap-4">
