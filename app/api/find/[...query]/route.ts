@@ -2,11 +2,7 @@ import { getChapterLink, getImagesChapter } from "@/utils";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  request: any,
-  context: { params: any },
-  response: NextApiResponse
-) {
+export async function GET(context: { params: any }) {
   const { query } = context.params;
   const regexPunctuationExceptCommaAndHyphen = /[^\p{L}\p{N}\s,-]/gu;
 

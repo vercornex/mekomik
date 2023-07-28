@@ -44,7 +44,7 @@ export const getTitle = async (url: RequestInfo | URL) => {
 export const getChapterLink = async (url: RequestInfo | URL) => {
   const document = await getDOM(url);
   const chapters: string[] = [];
-  console.log("get chapter");
+  // console.log("get chapter");
   document.querySelectorAll(".eph-num").forEach(async (div) => {
     const link = div.querySelector("a")?.getAttribute("href")!;
     if (link.startsWith("https")) {
@@ -90,24 +90,25 @@ export const getDOM = async (url: RequestInfo | URL) => {
   return document;
 };
 export const getData = async (
+  page: number = 1,
   amount: number = 61,
   downloads: object[] = []
 ) => {
   // console.log("Crawling Data...");
 
   let nextPage = "";
-  for (let index = 1; index <= amount; index++) {
-    if (index > 1) {
-      nextPage = `page/${index}/`;
-    }
-    const url = `https://manhwaland.cfd/${nextPage}`;
-
-    const document = await getDOM(url);
-
-    store(downloads, document);
-
-    console.log(downloads);
+  // for (let index = 1; index <= amount; index++) {
+  if (page > 0) {
+    nextPage = `page/${page}/`;
   }
+  const url = `https://manhwaland.cfd/${nextPage}`;
+
+  const document = await getDOM(url);
+
+  store(downloads, document);
+
+  // console.log(downloads);
+  // }
   const cleanData = removeDuplicateData(downloads);
   const promises = cleanData.map(async (data) => {
     data["title"] = await getTitle(data["link"]);
