@@ -1,5 +1,4 @@
 import { JSDOM } from "jsdom";
-import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
