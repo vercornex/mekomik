@@ -29,3 +29,11 @@ body {
 .input {
   @apply p-2 border-2 border-black rounded-lg w-full text-black;
 }
+
+.btn-primary {
+  @apply text-white px-4 py-2 bg-pink-600 border-2 border-pink-700 rounded-md cursor-pointer capitalize disabled:bg-pink-300 disabled:text-black;
+}
+
+.btn-home {
+  @apply bg-pink-600 px-4 py-2 border-2 border-pink-400 text-white rounded-md cursor-pointer;
+}

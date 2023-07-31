@@ -11,3 +11,7 @@ export interface InputFormProps {
   value: string;
   styles?: string;
 }
+
+export interface ObjectProps {
+  key: any;
+}
