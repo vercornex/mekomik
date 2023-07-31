@@ -3,7 +3,9 @@ import Link from "next/link";
 
 export default async function Baca({ params }: any) {
   const find = params.title.toString().replaceAll(regexUrl, " ");
-  const data = komik.find((data) => data.title.toLowerCase() === find);
+  const data = komik.find(
+    (data) => data.title.toLowerCase() === find.toLowerCase()
+  );
   const chapters = data?.chapters;
   const title = data?.title!;
   const getChapterText = (ch: string) => {
