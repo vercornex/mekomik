@@ -1,6 +1,6 @@
 export const getImagesChapter = async (title: string, chapter: string) => {
   const images: string[] = [];
-  for (let index = 1; index <= 26; index++) {
+  for (let index = 1; index <= 200; index++) {
     const url = `https://cdn.manhwaland.cfd/wp-content/manga-images/${title[0]}/${title}/${chapter}/${index}.jpg`;
     images.push(url);
   }

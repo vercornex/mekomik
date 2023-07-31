@@ -25,7 +25,7 @@ export default function ReaderComp({
   };
 
   return (
-    <div className="reader min-h-screen flex flex-col items-center w-full">
+    <div className="reader min-h-screen h-fit flex flex-col items-center w-full">
       {images &&
         images?.map((item: string, i: any) => (
           <CustomImage key={i} img={item} />
