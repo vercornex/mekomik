@@ -13,7 +13,7 @@ export default async function chapter({ params }: any) {
     .replace(regexPunctuationExceptCommaAndHyphen, "")
     .replaceAll(" ", "-");
   const currChapter = parseInt(ch.toString().split("-")[1]);
-  console.log(`Current: ${currChapter}`);
+  // console.log(`Current: ${currChapter}`);
 
   return (
     <div className="flex flex-col justify-center px-1 py-8 sm:p-8 gap-8">
