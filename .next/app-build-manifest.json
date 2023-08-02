@@ -1,0 +1,55 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack-a5d19ca048dc422c.js",
+      "static/chunks/fd9d1056-c9eb6f688b3961a6.js",
+      "static/chunks/596-3a6d73791341a0ca.js",
+      "static/chunks/main-app-707e0f49e140cfe9.js",
+      "static/chunks/app/page-d853f5c52a9d582e.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-a5d19ca048dc422c.js",
+      "static/chunks/fd9d1056-c9eb6f688b3961a6.js",
+      "static/chunks/596-3a6d73791341a0ca.js",
+      "static/chunks/main-app-707e0f49e140cfe9.js",
+      "static/chunks/685-bd19e28e7533c762.js",
+      "static/css/51beea24e59274c0.css",
+      "static/chunks/app/layout-ceb79746495ef0fe.js"
+    ],
+    "/comic/page": [
+      "static/chunks/webpack-a5d19ca048dc422c.js",
+      "static/chunks/fd9d1056-c9eb6f688b3961a6.js",
+      "static/chunks/596-3a6d73791341a0ca.js",
+      "static/chunks/main-app-707e0f49e140cfe9.js",
+      "static/chunks/685-bd19e28e7533c762.js",
+      "static/chunks/946-56a61448cb31c05f.js",
+      "static/chunks/app/comic/page-e3d747b66c78ed39.js"
+    ],
+    "/history/page": [
+      "static/chunks/webpack-a5d19ca048dc422c.js",
+      "static/chunks/fd9d1056-c9eb6f688b3961a6.js",
+      "static/chunks/596-3a6d73791341a0ca.js",
+      "static/chunks/main-app-707e0f49e140cfe9.js",
+      "static/chunks/685-bd19e28e7533c762.js",
+      "static/chunks/app/history/page-86969e367b8bc8db.js"
+    ],
+    "/comic/baca/[title]/page": [
+      "static/chunks/webpack-a5d19ca048dc422c.js",
+      "static/chunks/fd9d1056-c9eb6f688b3961a6.js",
+      "static/chunks/596-3a6d73791341a0ca.js",
+      "static/chunks/main-app-707e0f49e140cfe9.js",
+      "static/chunks/685-bd19e28e7533c762.js",
+      "static/chunks/app/comic/baca/[title]/page-b6c33f8611a17007.js"
+    ],
+    "/comic/baca/[title]/[ch]/page": [
+      "static/chunks/webpack-a5d19ca048dc422c.js",
+      "static/chunks/fd9d1056-c9eb6f688b3961a6.js",
+      "static/chunks/596-3a6d73791341a0ca.js",
+      "static/chunks/main-app-707e0f49e140cfe9.js",
+      "static/chunks/685-bd19e28e7533c762.js",
+      "static/chunks/99-49e6b4a6d0474432.js",
+      "static/chunks/946-56a61448cb31c05f.js",
+      "static/chunks/app/comic/baca/[title]/[ch]/page-1919c65ea7880142.js"
+    ]
+  }
+}
