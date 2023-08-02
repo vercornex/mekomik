@@ -1,5 +1,5 @@
 "use client";
-import { komik } from "@/constants";
+import { komik, DATA } from "@/constants";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import Pagination from "./Pagination";
@@ -17,7 +17,8 @@ export default function ListKomik() {
   //   const datas = komik.slice(limit * (page - 1), limit * page);
   const page = searchParam.get("page") ? parseInt(searchParam.get("page")!) : 1;
   useEffect(() => {
-    setDatas(komik.slice(limit * (page - 1), limit * page));
+    // setDatas(komik.slice(limit * (page - 1), limit * page));
+    setDatas(DATA.slice(limit * (page - 1), limit * page));
   }, [limit]);
 
   return (
@@ -30,11 +31,10 @@ export default function ListKomik() {
           name="show"
           id="show"
           className="text-black px-8 py-2"
+          defaultValue={limit}
           onChange={(e) => setLimit(parseInt(e.target.value))}
         >
-          <option selected value="10">
-            10
-          </option>
+          <option value="10">10</option>
           <option value="20">20</option>
           <option value="50">50</option>
           <option value="80">80</option>
@@ -54,7 +54,7 @@ export default function ListKomik() {
       </div>
       <Pagination
         url={url}
-        size={komik.length}
+        size={DATA.length}
         currentPage={page}
         limit={limit}
       />

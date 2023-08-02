@@ -4,13 +4,14 @@ import { getImagesChapter, saveHistory } from "@/utils/help";
 import { useEffect, useState } from "react";
 import CustomImage from "./CustomImage";
 import { usePathname } from "next/navigation";
+import { DATA } from "@/constants";
 
 export default function ReaderComp({
   title,
   chapter,
 }: {
   title: string;
-  chapter: string;
+  chapter: any;
 }) {
   const pathname = usePathname();
   const [images, setImages] = useState<string[]>([]);
@@ -20,8 +21,11 @@ export default function ReaderComp({
   }, []);
 
   const getData = async () => {
-    const images = await getImagesChapter(title, chapter);
-    setImages(images);
+    const data = DATA.find(
+      (data) => data.title.toLowerCase() === title.toLowerCase()
+    );
+    console.log(data);
+    setImages(data?.[chapter]);
   };
 
   return (

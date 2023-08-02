@@ -13,7 +13,8 @@ export default function GoButton({
   const router = useRouter();
   const pathName = usePathname();
   const newUrl = pathName.split("-")[0];
-  const go = `${newUrl}-${chapter}`;
+  const zero = pathName.split("-")[1].includes("0") ? "0" : "";
+  const go = `${newUrl}-${zero}${chapter}`;
 
   const disable = chapter < 1 && type === "prev";
   return (

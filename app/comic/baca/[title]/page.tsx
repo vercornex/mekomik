@@ -1,9 +1,9 @@
-import { komik, regexUrl } from "@/constants";
+import { DATA, komik, regexUrl } from "@/constants";
 import Link from "next/link";
 
 export default async function Baca({ params }: any) {
   const find = params.title.toString().replaceAll(regexUrl, " ");
-  const data = komik.find(
+  const data = DATA.find(
     (data) => data.title.toLowerCase() === find.toLowerCase()
   );
   const chapters = data?.chapters;

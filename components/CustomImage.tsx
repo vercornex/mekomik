@@ -23,7 +23,9 @@ export default function CustomImage({ img }: any) {
           alt="img"
           width={600}
           height={600}
-          onError={handleImageNotFound}
+          style={{ width: "auto", height: "auto" }}
+          priority
+          // onError={handleImageNotFound}
         />
       )}
     </>

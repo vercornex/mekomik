@@ -1,10 +1,13 @@
+"use client";
 import GoButton from "@/components/GoButton";
 import ReaderComp from "@/components/ReaderComp";
 import { regexPunctuationExceptCommaAndHyphen, regexUrl } from "@/constants";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
-export default async function chapter({ params }: any) {
+export default function chapter({ params }: any) {
   const { title, ch } = params;
+  const cprams = useParams();
 
   const comicTitle = title.toString().replace(regexUrl, " ");
   const converted = comicTitle
@@ -13,7 +16,7 @@ export default async function chapter({ params }: any) {
     .replace(regexPunctuationExceptCommaAndHyphen, "")
     .replaceAll(" ", "-");
   const currChapter = parseInt(ch.toString().split("-")[1]);
-  // console.log(`Current: ${currChapter}`);
+  // console.log(`Current: ${cprams.title} ${cprams.ch}`);
 
   return (
     <div className="flex flex-col justify-center px-1 py-8 sm:p-8 gap-8">
@@ -26,7 +29,7 @@ export default async function chapter({ params }: any) {
       >
         {comicTitle} All Chapter
       </Link>
-      <ReaderComp title={converted} chapter={ch} />
+      <ReaderComp title={comicTitle} chapter={ch} />
       <div className="btn-wrapper flex gap-4 justify-center p-8">
         <GoButton chapter={currChapter - 1} type={"prev"} />
         <GoButton chapter={currChapter + 1} type={"next"} />

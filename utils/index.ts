@@ -28,22 +28,36 @@ export const getImagesChapterOld = async (title: string, chapter: string) => {
   // const chImages = [];
   // for (let i = 1; i <= chapters.length; i++) {
   const images: string[] = [];
-  for (let index = 1; index <= 26; index++) {
+  let urlChanged = false;
+  for (let index = 1; index <= 200; index++) {
+    urlChanged = false;
     const url = `https://cdn.manhwaland.cfd/wp-content/manga-images/${title[0]}/${title}/${chapter}/${index}.jpg`;
-    // console.log("get images from: ", url);
-    // https://cdn.manhwaland.cfd/wp-content/manga-images/s/she-wants-to-get-drunk/chapter-1/1.jpg
 
-    const document = await getDOM(url);
-    if (document.querySelector("h1")?.textContent === "404") {
+    let imageNotFound = await checkImageNotFound(url);
+    if (imageNotFound && urlChanged) {
       return images;
     }
-
-    images.push(url);
-    // console.log("image saved", images);
+    if (imageNotFound) {
+      urlChanged = true;
+      const newUrl = `https://cdn.manhwaland.cfd/uploads/manga-images/${title[0]}/${title}/${chapter}/${index}.jpg`;
+      imageNotFound = await checkImageNotFound(newUrl);
+      if (!imageNotFound) {
+        images.push(newUrl);
+      }
+    } else {
+      images.push(url);
+    }
   }
   // }
 };
 
+const checkImageNotFound = async (url: RequestInfo | URL) => {
+  const document = await getDOM(url);
+  if (document.querySelector("h1")?.textContent === "404") {
+    return true;
+  }
+  return false;
+};
 export const getTitle = async (url: RequestInfo | URL) => {
   const document = await getDOM(url);
   const title = document.querySelector(".entry-title")?.textContent;
