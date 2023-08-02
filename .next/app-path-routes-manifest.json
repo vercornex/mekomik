@@ -1,9 +1,0 @@
-{
-  "/favicon.ico/route": "/favicon.ico",
-  "/page": "/",
-  "/comic/page": "/comic",
-  "/history/page": "/history",
-  "/api/data/route": "/api/data",
-  "/comic/baca/[title]/page": "/comic/baca/[title]",
-  "/comic/baca/[title]/[ch]/page": "/comic/baca/[title]/[ch]"
-}

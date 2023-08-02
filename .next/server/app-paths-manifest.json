@@ -1,9 +1,0 @@
-{
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js",
-  "/comic/page": "app/comic/page.js",
-  "/history/page": "app/history/page.js",
-  "/api/data/route": "app/api/data/route.js",
-  "/comic/baca/[title]/page": "app/comic/baca/[title]/page.js",
-  "/comic/baca/[title]/[ch]/page": "app/comic/baca/[title]/[ch]/page.js"
-}
