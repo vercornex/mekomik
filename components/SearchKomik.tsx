@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import CustomInput from "./CustomInput";
-import { komik } from "@/constants";
+import { komik, DATA } from "@/constants";
 import Link from "next/link";
 
 export default function SearchKomik() {
@@ -9,7 +9,7 @@ export default function SearchKomik() {
   const [find, setFind] = useState<any>(null);
   const searchComic = (e: any) => {
     if (e.key === "Enter" && input !== "") {
-      const found = komik.filter((data: { title: string }) =>
+      const found = DATA.filter((data: { title: string }) =>
         data.title.toLowerCase().includes(input.toLowerCase())
       );
       // alert(`submitted ${found}`);

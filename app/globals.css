@@ -31,11 +31,11 @@ body {
 }
 
 .btn-primary {
-  @apply text-white px-4 py-2 bg-pink-600 border-2 border-pink-700 rounded-md cursor-pointer capitalize disabled:bg-pink-300 disabled:text-black disabled:cursor-not-allowed;
+  @apply text-white px-4 py-2 select-none bg-pink-600 border-2 border-pink-700 rounded-md cursor-pointer capitalize disabled:bg-pink-300 disabled:text-black disabled:cursor-not-allowed;
 }
 
 .btn-pager {
-  @apply text-white p-2 bg-pink-600 border-2 border-pink-700 rounded-md cursor-pointer capitalize disabled:bg-pink-300 disabled:text-black disabled:cursor-not-allowed;
+  @apply text-white p-2 select-none bg-pink-600 border-2 border-pink-700 rounded-md cursor-pointer capitalize disabled:bg-pink-300 disabled:text-black disabled:cursor-not-allowed;
 }
 
 .btn-home {

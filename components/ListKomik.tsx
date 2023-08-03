@@ -19,7 +19,7 @@ export default function ListKomik() {
   useEffect(() => {
     // setDatas(komik.slice(limit * (page - 1), limit * page));
     setDatas(DATA.slice(limit * (page - 1), limit * page));
-  }, [limit]);
+  }, [limit, page]);
 
   return (
     <>

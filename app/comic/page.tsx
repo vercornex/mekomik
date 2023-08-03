@@ -1,3 +1,4 @@
+"use client";
 import ListKomik from "@/components/ListKomik";
 import SearchKomik from "@/components/SearchKomik";
 

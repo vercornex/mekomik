@@ -30,7 +30,9 @@ export default function Pagination({
         </Link>
         <Link
           href={`${url}?page=${currentPage - 1}&limit=${limit}`}
-          className={`btn-pager`}
+          className={`btn-pager ${
+            currentPage - 1 < 1 && "pointer-events-none"
+          }`}
         >
           prev
         </Link>
@@ -51,7 +53,9 @@ export default function Pagination({
         )}
         <Link
           href={`${url}?page=${currentPage + 1}&limit=${limit}`}
-          className={`btn-pager`}
+          className={`btn-pager ${
+            currentPage + 1 > pages && "pointer-events-none"
+          }`}
         >
           next
         </Link>

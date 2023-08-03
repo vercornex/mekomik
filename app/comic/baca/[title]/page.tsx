@@ -1,18 +1,31 @@
+"use client";
 import { DATA, komik, regexUrl } from "@/constants";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-export default async function Baca({ params }: any) {
+export default function Baca({ params }: any) {
   const find = params.title.toString().replaceAll(regexUrl, " ");
-  const data = DATA.find(
-    (data) => data.title.toLowerCase() === find.toLowerCase()
-  );
-  const chapters = data?.chapters;
-  const title = data?.title!;
+  const [chapters, setChapters] = useState<string[]>([]);
+  const [title, setTitle] = useState("");
   const getChapterText = (ch: string) => {
     const chapter = ch.split("-");
     const episode = chapter[chapter.length - 1].replace("/", "");
     return episode;
   };
+
+  useEffect(() => {
+    const data = DATA.find(
+      (data) => data.title.toLowerCase() === find.toLowerCase()
+    );
+    setChapters(data?.chapters!);
+    // const data = komik.find(
+    //   (data) => data.title.toLowerCase() === find.toLowerCase()
+    // );
+    setTitle(data?.title!);
+    // const chapters = data?.chapters;
+    // const title = data?.title!;
+  }, []);
+
   return (
     <div className="sm:p-8">
       <h1 className="px-4 text-[24px] text-center capitalize">{title}</h1>
