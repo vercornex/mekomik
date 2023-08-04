@@ -45,7 +45,9 @@ export default function ReaderComp({
 
   return (
     <div className="reader min-h-screen h-fit flex flex-col items-center w-full">
+      {!images && <h1>Page is not available</h1>}
       {!loading &&
+        images &&
         images.map((item: string, i: any) => (
           <CustomImage key={i} img={item} />
         ))}

@@ -35,7 +35,7 @@ body {
 }
 
 .btn-pager {
-  @apply text-white p-2 select-none bg-pink-600 border-2 border-pink-700 rounded-md cursor-pointer capitalize disabled:bg-pink-300 disabled:text-black disabled:cursor-not-allowed;
+  @apply text-white text-center p-1 sm:p-2 select-none bg-pink-600 border-2 border-pink-700 rounded-md cursor-pointer capitalize disabled:bg-pink-300 disabled:text-black disabled:cursor-not-allowed;
 }
 
 .btn-home {

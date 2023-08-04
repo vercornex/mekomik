@@ -8,7 +8,11 @@ export default function SearchKomik() {
   const [input, setInput] = useState("");
   const [find, setFind] = useState<any>(null);
   const searchComic = (e: any) => {
-    if (e.key === "Enter" && input !== "") {
+    console.log(e.key);
+    if (
+      (e.key === "Enter" || e.key === "Go" || e.key === "Done") &&
+      input !== ""
+    ) {
       const found = DATA.filter((data: { title: string }) =>
         data.title.toLowerCase().includes(input.toLowerCase())
       );

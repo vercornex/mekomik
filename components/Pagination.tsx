@@ -26,7 +26,7 @@ export default function Pagination({
     <>
       <div className="pagination grid grid-cols-7 gap-4">
         <Link href={`${url}?page=${1}&limit=${limit}`} className={`btn-pager`}>
-          start
+          &lt;&lt;
         </Link>
         <Link
           href={`${url}?page=${currentPage - 1}&limit=${limit}`}
@@ -34,7 +34,7 @@ export default function Pagination({
             currentPage - 1 < 1 && "pointer-events-none"
           }`}
         >
-          prev
+          &lt;
         </Link>
         {links.map(
           (link, i) =>
@@ -45,7 +45,7 @@ export default function Pagination({
                 href={`${url}?page=${i + 1}&limit=${limit}`}
                 className={`${
                   i + 1 === currentPage ? "bg-pink-500" : "bg-gray-600"
-                } text-center text-white px-3 py-2 rounded-md`}
+                } text-center text-white p-1 sm:px-3 sm:py-2 rounded-md`}
               >
                 {i + 1}
               </Link>
@@ -57,13 +57,13 @@ export default function Pagination({
             currentPage + 1 > pages && "pointer-events-none"
           }`}
         >
-          next
+          &gt;
         </Link>
         <Link
           href={`${url}?page=${pages}&limit=${limit}`}
           className={`btn-pager`}
         >
-          end
+          &gt;&gt;
         </Link>
       </div>
     </>
