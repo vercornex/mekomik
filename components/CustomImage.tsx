@@ -19,6 +19,7 @@ export default function CustomImage({ img }: any) {
     <>
       {!hideImage && (
         <Image
+          className="w-full"
           src={image}
           alt="img"
           width={600}
