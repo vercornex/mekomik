@@ -1,10 +1,9 @@
 "use client";
-import { DATA, komik, regexUrl } from "@/constants";
+import { regexUrl } from "@/constants";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Baca({ params }: any) {
-  const find = params.title.toString().replaceAll(regexUrl, " ");
   const [chapters, setChapters] = useState<string[]>([]);
   const [title, setTitle] = useState("");
   const getChapterText = (ch: string) => {
@@ -14,16 +13,21 @@ export default function Baca({ params }: any) {
   };
 
   useEffect(() => {
-    const data = DATA.find(
-      (data) => data.title.toLowerCase() === find.toLowerCase()
-    );
-    setChapters(data?.chapters!);
+    const find = params.title.toString().replaceAll(regexUrl, " ");
+    async function fetchData() {
+      const response = await fetch(`/api/komik?title=${find}`);
+      const chunk = await response.json();
+      setChapters(chunk.chapters);
+      setTitle(chunk.title);
+    }
+    // setChapters(data?.chapters!);
     // const data = komik.find(
     //   (data) => data.title.toLowerCase() === find.toLowerCase()
     // );
-    setTitle(data?.title!);
+    // setTitle(data?.title!);
     // const chapters = data?.chapters;
     // const title = data?.title!;
+    fetchData();
   }, []);
 
   return (

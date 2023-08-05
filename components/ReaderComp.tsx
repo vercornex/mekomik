@@ -4,7 +4,7 @@
 // import { getImagesChapterNeo } from "@/utils";
 import CustomImage from "./CustomImage";
 // import { usePathname } from "next/navigation";
-import { DATA } from "@/constants";
+// import { DATA } from "@/constants";
 import { useEffect, useState } from "react";
 
 export default function ReaderComp({
@@ -24,13 +24,14 @@ export default function ReaderComp({
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`/api/komik?title=${title}`);
+      const chunk = await response.json();
+      setImages(chunk?.[chapter]);
+    }
     try {
       setLoading(true);
-      const datas = DATA.find(
-        (data) => data.title.toLowerCase() === title.toLowerCase()
-      );
-      // console.log(data);
-      setImages(datas?.[chapter]);
+      fetchData();
     } catch (error) {
       console.log(error);
     } finally {

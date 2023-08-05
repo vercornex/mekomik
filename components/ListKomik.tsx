@@ -18,7 +18,23 @@ export default function ListKomik() {
   const page = searchParam.get("page") ? parseInt(searchParam.get("page")!) : 1;
   useEffect(() => {
     // setDatas(komik.slice(limit * (page - 1), limit * page));
-    setDatas(DATA.slice(limit * (page - 1), limit * page));
+    // setDatas(DATA.slice(limit * (page - 1), limit * page));
+    async function fetchData() {
+      let start = limit * (page - 1);
+      let loadedData: any[] = [];
+
+      // Fetch data in chunks until we reach the desired number of records
+      while (loadedData.length < limit) {
+        const response = await fetch(`/api/data?start=${start}`);
+        const chunk = await response.json();
+        if (chunk.length === 0) break; // No more data available
+        loadedData = loadedData.concat(chunk);
+        start += chunk.length;
+      }
+      setDatas(loadedData);
+    }
+
+    fetchData();
   }, [limit, page]);
 
   return (

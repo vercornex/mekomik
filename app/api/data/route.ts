@@ -1,19 +1,18 @@
-import { JSDOM } from "jsdom";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { DATA } from "@/constants";
 
-export async function POST(req: Request) {
-  const { input } = await req.json();
-  const url = `https://www.npmjs.com/package/${input.toLowerCase()}`;
-  // console.log(url);
+export async function GET(req: NextRequest) {
+  const numRecords = 10; // Number of records to load in each chunk
+  // split url into url and query ex:http://localhost:3000/api/data?start=0 into [http://localhost:3000/api/data, start=0]
+  const query = req.url.split("?")[1];
+  // split each query, in case we have more than one query param
+  const params = query.split("&");
+  // get first param value by splitting with "=" sign
+  const startParam = params[0].split("=")[1];
+  const start = parseInt(startParam) || 0;
 
-  const response = await fetch(url);
-
-  const html = await response.text();
-
-  const dom = new JSDOM(html);
-  const document = dom.window.document;
-
-  const downloads = document.querySelector("._9ba9a726")?.textContent;
-
-  return NextResponse.json({ item: input, downloads });
+  // Slice the data to get the desired chunk
+  const chunk = DATA.slice(start, start + numRecords);
+  // console.log(chunk);
+  return NextResponse.json(chunk);
 }
