@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
   const ch = params[1].split("=")[1].replace(regexUrl, " ");
 
   const alphabet = title[0]
-  const filePath = path.join(__dirname, `results/${alphabet}`, `${title}.json`);
+  const filePath = path.join(`../../../public/results/${alphabet}`, `${title}.json`);
   console.log(filePath)
 
   const Data = getTitles()
