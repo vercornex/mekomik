@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
-import { regexUrl } from "@/constants";
+import { publicPath, regexUrl } from "@/constants";
 import { getChapters, getTitles } from "@/utils";
 
 const fs = require('fs');
@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
   const ch = params[1].split("=")[1].replace(regexUrl, " ");
 
   const alphabet = title[0]
-  const filePath = path.join(`./results/${alphabet}`, `${title}.json`);
+  const filePath = path.join(`${publicPath}${alphabet}`, `${title}.json`);
   console.log(filePath)
 
   const Data = getTitles()
