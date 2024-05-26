@@ -3,15 +3,15 @@ import path from "path";
 import { publicPath, regexUrl } from "@/constants";
 import { getChapters, getTitles } from "@/utils";
 
-const fs = require('fs');
+const fs = require("fs");
 
 function readUrlsFromFile(filePath: any) {
   try {
-      const data = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(data);
+    const data = fs.readFileSync(filePath, "utf8");
+    return JSON.parse(data);
   } catch (error) {
-      console.error('Error reading the JSON file:', error);
-      return [];
+    console.error("Error reading the JSON file:", error);
+    return [];
   }
 }
 
@@ -25,23 +25,25 @@ export async function GET(req: NextRequest) {
   const title = params[0].split("=")[1].replace(regexUrl, " ");
   const ch = params[1].split("=")[1].replace(regexUrl, " ");
 
-  const alphabet = title[0]
-  const filePath = `https://mekomik-vqkw-hsm3272v0-vercornexs-projects.vercel.app/results/${alphabet}/${title}.json`
-  console.log(filePath)
+  const alphabet = title[0];
+  const filePath = `https://mekomik-vqkw-hsm3272v0-vercornexs-projects.vercel.app/results/${alphabet}/${title}.json`;
+  console.log(filePath);
 
-  const Data = getTitles()
+  const Data = getTitles();
 
   // Slice the data to get the desired chunk
   const index = Data.findIndex(
     (data: any) => data.toLowerCase() === title.toLowerCase()
   );
-  const chapters=getChapters(index)
+  const chapters = getChapters(index);
 
   const indexChapter = chapters.findIndex(
     (data: any) => data.chapter.toLowerCase() === ch.toLowerCase()
-  ); 
-  
-  const Komik = readUrlsFromFile(filePath)
+  );
+
+  // const Komik = readUrlsFromFile(filePath);
+  const response = await fetch(filePath)
+  const Komik = await response.json()
 
   return NextResponse.json(Komik[indexChapter].data);
 }
