@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
   const ch = params[1].split("=")[1].replace(regexUrl, " ");
 
   const alphabet = title[0]
-  const filePath = `/results/${alphabet}/${title}.json`
+  const filePath = `https://mekomik-vqkw-hsm3272v0-vercornexs-projects.vercel.app/results/${alphabet}/${title}.json`
   console.log(filePath)
 
   const Data = getTitles()
