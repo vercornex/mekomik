@@ -2,10 +2,10 @@
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import Pagination from "./Pagination";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { getTitlesLength } from "@/utils";
 
-export default function ListKomik() {
+function ListKomik() {
   const searchParam = useSearchParams();
   const url = usePathname();
   const [limit, setLimit] = useState(10);
@@ -76,3 +76,13 @@ export default function ListKomik() {
     </>
   );
 }
+
+const Page = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ListKomik />
+    </Suspense>
+  );
+};
+
+export default Page;

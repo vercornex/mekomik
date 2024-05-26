@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function chapter({ params }: any) {
+export default function Chapter({ params }: any) {
   const { title, ch } = params;
   const cprams = useParams();
   const [data, setData] = useState<string[]>([]);
