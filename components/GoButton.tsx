@@ -12,9 +12,9 @@ export default function GoButton({
   // use router push to next chapter
   const router = useRouter();
   const pathName = usePathname();
-  const newUrl = pathName.split("-")[0];
-  const zero = pathName.split("-")[1].startsWith("0") ? "0" : "";
-  const go = `${newUrl}-${zero}${chapter}`;
+  const newUrl = pathName.split("Chapter")[0];
+  const zero = pathName.split("Chapter")[1].startsWith("0") ? "0" : "";
+  const go = `${newUrl}Chapter ${zero}${chapter}`;
 
   const disable = chapter < 1 && type === "prev";
   return (

@@ -1,10 +1,11 @@
 "use client";
 import { regexUrl } from "@/constants";
+import { Chapter } from "@/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Baca({ params }: any) {
-  const [chapters, setChapters] = useState<string[]>([]);
+  const [chapters, setChapters] = useState<Chapter[]>([]);
   const [title, setTitle] = useState("");
   const getChapterText = (ch: string) => {
     const chapter = ch.split("-");
@@ -20,13 +21,6 @@ export default function Baca({ params }: any) {
       setChapters(chunk.chapters);
       setTitle(chunk.title);
     }
-    // setChapters(data?.chapters!);
-    // const data = komik.find(
-    //   (data) => data.title.toLowerCase() === find.toLowerCase()
-    // );
-    // setTitle(data?.title!);
-    // const chapters = data?.chapters;
-    // const title = data?.title!;
     fetchData();
   }, []);
 
@@ -38,10 +32,10 @@ export default function Baca({ params }: any) {
           chapters.map((ch, i) => (
             <Link
               key={i}
-              href={`/comic/baca/${title}/chapter-${getChapterText(ch)}`}
+              href={`/comic/baca/${title}/${ch.chapter}`}
               className="text-white p-4 bg-gray-900 border-2 border-gray-700 rounded-md cursor-pointer"
             >
-              chapter-{getChapterText(ch)}
+              {ch.chapter}
             </Link>
           ))}
       </div>

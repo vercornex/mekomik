@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DATA } from "@/constants";
+import { getTitles } from "@/utils";
 
 export async function GET(req: NextRequest) {
   const numRecords = 10; // Number of records to load in each chunk
@@ -10,9 +10,9 @@ export async function GET(req: NextRequest) {
   // get first param value by splitting with "=" sign
   const startParam = params[0].split("=")[1];
   const start = parseInt(startParam) || 0;
+  const Data = getTitles()
 
   // Slice the data to get the desired chunk
-  const chunk = DATA.slice(start, start + numRecords);
-  // console.log(chunk);
+  const chunk = Data.slice(start, start + numRecords);
   return NextResponse.json(chunk);
 }

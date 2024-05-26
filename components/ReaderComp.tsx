@@ -1,4 +1,5 @@
 "use client";
+import { getImages } from "@/utils";
 // import { saveHistory } from "@/utils/help";
 // import { useEffect, useState } from "react";
 // import { getImagesChapterNeo } from "@/utils";
@@ -23,11 +24,11 @@ export default function ReaderComp({
   // const pathname = usePathname();
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  console.log(title)
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`/api/komik?title=${title}`);
-      const chunk = await response.json();
-      setImages(chunk?.[chapter]);
+      const chunk = await getImages(title, chapter)
+      setImages(chunk);
     }
     try {
       setLoading(true);

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { DATA, regexUrl } from "@/constants";
+import { getChapters, getTitles } from "@/utils";
 
 export async function GET(req: NextRequest) {
   // split url into url and query ex:http://localhost:3000/api/data?start=0 into [http://localhost:3000/api/data, start=0]
@@ -10,9 +11,14 @@ export async function GET(req: NextRequest) {
   const title = params[0].split("=")[1].replaceAll(regexUrl, " ");
   console.log(title);
 
+  const Data = getTitles()
+
   // Slice the data to get the desired chunk
-  const chunk = DATA.find(
-    (data: any) => data.title.toLowerCase() === title.toLowerCase()
+  const index = Data.findIndex(
+    (data: any) => data.toLowerCase() === title.toLowerCase()
   );
-  return NextResponse.json(chunk);
+
+  const chapters = getChapters(index)
+
+  return NextResponse.json({chapters:chapters, title:title});
 }

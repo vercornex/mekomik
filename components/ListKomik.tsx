@@ -1,24 +1,23 @@
 "use client";
-import { komik, DATA } from "@/constants";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
+import { getTitlesLength } from "@/utils";
 
 export default function ListKomik() {
   const searchParam = useSearchParams();
   const url = usePathname();
   const [limit, setLimit] = useState(10);
   const [datas, setDatas] = useState<any>([]);
-  // const limit = searchParam.get("limit")
-  //   ? parseInt(searchParam.get("limit")!)
-  //   : 10;
-  //   const limit = 10;
-  //   const datas = komik.slice(limit * (page - 1), limit * page);
+  const [totalKomik, setTotalKomik] = useState(0);
+
+
   const page = searchParam.get("page") ? parseInt(searchParam.get("page")!) : 1;
   useEffect(() => {
-    // setDatas(komik.slice(limit * (page - 1), limit * page));
-    // setDatas(DATA.slice(limit * (page - 1), limit * page));
+    
+    const totalKomik = getTitlesLength();
+    setTotalKomik(totalKomik)
     async function fetchData() {
       let start = limit * (page - 1);
       let loadedData: any[] = [];
@@ -62,15 +61,15 @@ export default function ListKomik() {
             <Link
               key={i}
               className="text-white p-4 bg-gray-900 border-2 border-gray-700 rounded-md cursor-pointer"
-              href={`/comic/baca/${data.title}`}
+              href={`/comic/baca/${data}`}
             >
-              {data.title}
+              {data}
             </Link>
           ))}
       </div>
       <Pagination
         url={url}
-        size={DATA.length}
+        size={totalKomik}
         currentPage={page}
         limit={limit}
       />
