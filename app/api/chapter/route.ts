@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
   const ch = params[1].split("=")[1].replace(regexUrl, " ");
 
   const alphabet = title[0]
-  const filePath = path.join(`${publicPath}${alphabet}`, `${title}.json`);
+  const filePath = path.join(__dirname, `results/${alphabet}`, `${title}.json`);
   console.log(filePath)
 
   const Data = getTitles()
@@ -40,6 +40,7 @@ export async function GET(req: NextRequest) {
   const indexChapter = chapters.findIndex(
     (data: any) => data.chapter.toLowerCase() === ch.toLowerCase()
   ); 
+  
   const Komik = readUrlsFromFile(filePath)
 
   return NextResponse.json(Komik[indexChapter].data);
