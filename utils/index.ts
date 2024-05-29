@@ -98,6 +98,7 @@ export const getChapter = (index:number) => {
 
 export const getImages = async (title:string, chapter:string) => {
   const response = await fetch(`/api/chapter?title=${title}&chapter=${chapter}`)
+  console.log(response)
   const komik = await response.json();
   return komik
 }

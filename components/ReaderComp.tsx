@@ -24,7 +24,7 @@ export default function ReaderComp({
   // const pathname = usePathname();
   const [images, setImages] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  console.log(title)
+  // console.log(title)
   useEffect(() => {
     async function fetchData() {
       const chunk = await getImages(title, chapter)

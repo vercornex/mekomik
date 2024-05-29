@@ -12,7 +12,7 @@ export default function Chapter({ params }: any) {
   const cprams = useParams();
   const [data, setData] = useState<string[]>([]);
 
-  const comicTitle = title.toString().replace(regexUrl, " ").replace(/%E2/g, '’');;
+  const comicTitle = title.toString().replace(regexUrl, " ").replace(/%E2/g, "'");;
   const comicChapter = ch.toString().replace(regexUrl, " ");
   const converted = comicTitle
     .toString()
