@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DATA, regexUrl } from "@/constants";
+import { regexUrl } from "@/constants";
 import { getChapters, getTitles } from "@/utils";
 
 export async function GET(req: NextRequest) {

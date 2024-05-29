@@ -1,7 +1,7 @@
 const axios = require("axios");
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const alphabet = Array.from({length: 26}, (_, i) => String.fromCharCode(65 + i));
-import data from "@/public/done.json"
+import data from "@/public/FINAL.json"
 import { Komik } from "@/types";
 const path = require('path');
 
